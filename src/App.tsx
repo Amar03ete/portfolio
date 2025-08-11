@@ -1,5 +1,4 @@
 import React from 'react';
-import { Analytics } from '@vercel/analytics/react';
 import { CustomCursor } from './components/CustomCursor';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
@@ -14,24 +13,21 @@ import { Footer } from './components/Footer';
 
 function App() {
   return (
-    <>
-      <div className="custom-cursor">
-        <CustomCursor />
-        <Header />
-        <main>
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Education />
-          <Experience />
-          <Reviews />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
-      <Analytics />
-    </>
+    <div className="custom-cursor">
+      <CustomCursor />
+      <Header />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Education />
+        <Experience />
+        <Reviews />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
   );
 }
 
