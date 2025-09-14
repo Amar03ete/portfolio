@@ -94,7 +94,7 @@ export const Hero: React.FC = () => {
               </a>
               
               <a
-                href="/resume.pdf"
+                href="/CV%20ETE.pdf"
                 download
                 className="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-md text-white border-2 border-white/20 hover:border-blue-400/50 font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
