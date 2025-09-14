@@ -29,7 +29,7 @@ const existingReviews = [
     role: 'Numerologist & counseller',
     company: 'Reallife solutions',
     rating: 4,
-    review: 'He has been Editing & managing my socials for me because i deal with people offline mostly but i just needed an online presence , supportive and hardworking.',
+    review: 'He has been Managing my socials & Editing for me because i deal with people offline mostly but i just needed an online presence , supportive and hardworking.',
     date: '2025-05-28',
     approved: true,
   },
