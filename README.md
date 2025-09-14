@@ -220,7 +220,7 @@ The contact form currently uses `mailto:` links to open the user's default email
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - **React Team** for the amazing framework
 - **Tailwind CSS** for the utility-first CSS framework
@@ -229,4 +229,3 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-**Made with ❤️ by Amar**
