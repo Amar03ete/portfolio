@@ -6,9 +6,9 @@ const education = [
   {
     degree: 'Bachelor of Technology (B.Tech)',
     field: 'Computer Science & Engineering',
-    institution: 'University Name',
-    location: 'City, State',
-    duration: '2020 - 2024',
+    institution: 'Sandip University',
+    location: 'Nashik, Maharashtra',
+    duration: '2022 - 2026',
     status: 'Currently Pursuing',
     description: 'Focused on data science, machine learning, algorithms, and business analytics. Completing projects in predictive modeling, AI applications, and data-driven solutions.',
     coursework: [
@@ -31,21 +31,21 @@ const education = [
   {
     degree: 'Higher Secondary Education',
     field: 'Science (PCM)',
-    institution: 'School Name',
+    institution: 'H.S School ',
     location: 'City, State',
-    duration: '2018 - 2020',
+    duration: '2020 - 2022',
     status: 'Completed',
-    description: 'Studied Physics, Chemistry, and Mathematics with focus on analytical thinking and problem-solving skills that form the foundation for data science.',
+    description: 'Studied in Physics, Chemistry, and Mathematics as my major feild during my senior secondary school.',
     coursework: [
       'Advanced Mathematics',
       'Physics',
       'Chemistry',
-      'Computer Science',
+      
     ],
     achievements: [
-      'Top 5% in state board examinations',
-      'Mathematics Olympiad participant',
-      'Science exhibition winner',
+      'Library incharge',
+      'Chemistry lab Assistant ',
+      'Vice-House Captain (Tagore) ',
     ],
   },
 ];
