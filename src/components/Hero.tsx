@@ -46,7 +46,7 @@ export const Hero: React.FC = () => {
             <div className="relative inline-block">
               <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto lg:mx-0 rounded-full overflow-hidden border-4 border-blue-400/50 shadow-2xl glow-intense">
                 <img
-                  src="/1733757385085.jpg"
+                  src="/idc.jpg"
                   alt="Amar"
                   className="w-full h-full object-cover"
                 />
