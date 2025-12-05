@@ -330,7 +330,7 @@ export const Contact: React.FC = () => {
                     {isSubmitting ? (
                       <>
                         <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                        Preparing Message...
+                        Sending Message...
                       </>
                     ) : (
                       <>
@@ -369,7 +369,7 @@ export const Contact: React.FC = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="/CV%20ETE.pdf"
+                  href="/amar_ap.pdf"
                   download
                   className="inline-flex items-center px-6 py-3 bg-white/10 text-white border-2 border-white/20 hover:border-blue-400/50 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
                 >
