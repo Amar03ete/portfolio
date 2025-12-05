@@ -60,7 +60,6 @@ export const Contact: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  // 🔥 CLEANED SUBMIT HANDLER (NO EMAILJS)
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -250,3 +249,4 @@ export const Contact: React.FC = () => {
     </section>
   );
 };
+
