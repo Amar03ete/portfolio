@@ -29,7 +29,7 @@ const existingReviews = [
     role: 'Numerologist & counseller',
     company: 'Reallife solutions',
     rating: 4,
-    review: 'He has been Managing my socials & Editing for me because i deal with people offline mostly but i just needed an online presence , supportive and hardworking.',
+    review: 'He has been Editing & managing my socials for me because i deal with people offline mostly but i just needed an online presence , supportive and hardworking.',
     date: '2025-05-28',
     approved: true,
   },
@@ -39,6 +39,7 @@ const existingReviews = [
 export const Reviews: React.FC = () => {
   const { ref, hasIntersected } = useIntersectionObserver();
   const [showForm, setShowForm] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [formData, setFormData] = useState({
     name: '',
     role: '',
@@ -47,6 +48,17 @@ export const Reviews: React.FC = () => {
     review: '',
   });
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const cardsPerView = 3;
+  const maxIndex = Math.max(0, existingReviews.length - cardsPerView);
+
+  const handlePrevious = () => {
+    setCurrentIndex(prev => Math.max(0, prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex(prev => Math.min(maxIndex, prev + 1));
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -129,50 +141,61 @@ Please review and approve this testimonial for your portfolio website.
             </button>
           </div>
 
-          {/* Floating Reviews Strip */}
+          {/* Reviews Carousel */}
           <div className={`relative ${hasIntersected ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
-            <div className="overflow-hidden">
-              <div className="flex animate-scroll-left space-x-6 py-4">
-                {/* First set of reviews */}
-                {existingReviews.map((review) => (
-                  <div
-                    key={`first-${review.id}`}
-                    className="flex-shrink-0 w-80 glass rounded-xl p-6 border border-white/20"
-                  >
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mr-4">
-                        <User className="text-white" size={20} />
-                      </div>
-                      <div>
-                        <h4 className="text-white font-semibold">{review.name}</h4>
-                        <p className="text-gray-400 text-sm">{review.role}</p>
-                        <p className="text-gray-500 text-xs">{review.company}</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center mb-3">
-                      {renderStars(review.rating)}
-                    </div>
-                    
-                    <p className="text-gray-300 text-sm leading-relaxed mb-4">
-                      "{review.review}"
-                    </p>
-                    
-                    <div className="flex items-center text-gray-500 text-xs">
-                      <Calendar size={12} className="mr-1" />
-                      {new Date(review.date).toLocaleDateString()}
-                    </div>
-                  </div>
+            {/* Navigation Buttons */}
+            <div className="flex items-center justify-between mb-8">
+              <button
+                onClick={handlePrevious}
+                disabled={currentIndex === 0}
+                className="p-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:from-gray-600 disabled:to-gray-600 disabled:opacity-50 disabled:cursor-not-allowed text-white transition-all duration-300 hover:shadow-lg"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              <div className="flex gap-2">
+                {existingReviews.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index >= currentIndex && index < currentIndex + cardsPerView
+                        ? 'bg-gradient-to-r from-blue-500 to-purple-500 w-8'
+                        : 'bg-gray-600 hover:bg-gray-500'
+                    }`}
+                  />
                 ))}
-                
-                {/* Duplicate set for seamless loop */}
+              </div>
+
+              <button
+                onClick={handleNext}
+                disabled={currentIndex >= maxIndex}
+                className="p-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:from-gray-600 disabled:to-gray-600 disabled:opacity-50 disabled:cursor-not-allowed text-white transition-all duration-300 hover:shadow-lg"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Cards Container */}
+            <div className="overflow-hidden">
+              <div
+                className="flex gap-6 transition-transform duration-500 ease-out"
+                style={{
+                  transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
+                  width: `${(existingReviews.length / cardsPerView) * 100}%`,
+                }}
+              >
                 {existingReviews.map((review) => (
                   <div
-                    key={`second-${review.id}`}
-                    className="flex-shrink-0 w-80 glass rounded-xl p-6 border border-white/20"
+                    key={review.id}
+                    className="flex-shrink-0 w-80 glass rounded-xl p-6 border border-white/20 hover:border-white/40 transition-all duration-300 hover:shadow-xl"
                   >
                     <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mr-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                         <User className="text-white" size={20} />
                       </div>
                       <div>
@@ -181,15 +204,15 @@ Please review and approve this testimonial for your portfolio website.
                         <p className="text-gray-500 text-xs">{review.company}</p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center mb-3">
                       {renderStars(review.rating)}
                     </div>
-                    
+
                     <p className="text-gray-300 text-sm leading-relaxed mb-4">
                       "{review.review}"
                     </p>
-                    
+
                     <div className="flex items-center text-gray-500 text-xs">
                       <Calendar size={12} className="mr-1" />
                       {new Date(review.date).toLocaleDateString()}
